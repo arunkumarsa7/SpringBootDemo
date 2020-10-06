@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,6 +29,8 @@ public class CreateProductTests {
 
 	private static float COMMON_PRICE;
 
+	private static Integer productId;
+
 	@Autowired
 	ProductController productController;
 
@@ -39,14 +42,50 @@ public class CreateProductTests {
 		COMMON_PRICE = 0.0f;
 	}
 
+	@Before
+	public void configure() {
+		final Product product = productController.getLatestProduct();
+		if (product == null) {
+			productId = 0;
+		} else {
+			productId = productController.getLatestProduct().getId();
+		}
+	}
+
 	@Test
 	public void create10Products() {
-		final Product product = productController.getLatestProduct();
-		final List<Product> tempProducts = createProducts(10, product.getId());
+		final List<Product> tempProducts = createProducts(10, productId);
 		final List<Product> createdProducts = new ArrayList<>(tempProducts.size());
 		productController.saveAllProducts(tempProducts).forEach(createdProducts::add);
 		assertThat(createdProducts).isNotNull();
 		assertThat(createdProducts.size()).isEqualTo(10);
+	}
+
+	@Test
+	public void create100Products() {
+		final List<Product> tempProducts = createProducts(100, productId);
+		final List<Product> createdProducts = new ArrayList<>(tempProducts.size());
+		productController.saveAllProducts(tempProducts).forEach(createdProducts::add);
+		assertThat(createdProducts).isNotNull();
+		assertThat(createdProducts.size()).isEqualTo(100);
+	}
+
+	@Test
+	public void create1000Products() {
+		final List<Product> tempProducts = createProducts(1000, productId);
+		final List<Product> createdProducts = new ArrayList<>(tempProducts.size());
+		productController.saveAllProducts(tempProducts).forEach(createdProducts::add);
+		assertThat(createdProducts).isNotNull();
+		assertThat(createdProducts.size()).isEqualTo(1000);
+	}
+
+	@Test
+	public void create2000Products() {
+		final List<Product> tempProducts = createProducts(2000, productId);
+		final List<Product> createdProducts = new ArrayList<>(tempProducts.size());
+		productController.saveAllProducts(tempProducts).forEach(createdProducts::add);
+		assertThat(createdProducts).isNotNull();
+		assertThat(createdProducts.size()).isEqualTo(2000);
 	}
 
 	private List<Product> createProducts(final int productCount, final int latestProductId) {

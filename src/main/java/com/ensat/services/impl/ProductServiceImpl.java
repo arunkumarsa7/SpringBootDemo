@@ -50,4 +50,27 @@ public class ProductServiceImpl implements ProductService {
 		return productRepository.findTopByOrderByIdDesc();
 	}
 
+	@Override
+	public void deleteAllProducts(final List<Product> products) {
+		productRepository.deleteAll(products);
+	}
+
+	@Override
+	public Iterable<Product> listProducts(final Integer count) {
+		if (count == 10) {
+			return productRepository.findTop10ByOrderByIdDesc();
+		}
+		if (count == 100) {
+			return productRepository.findTop100ByOrderByIdDesc();
+		}
+		if (count == 1000) {
+			return productRepository.findTop1000ByOrderByIdDesc();
+		}
+		if (count == 2000) {
+			return productRepository.findTop2000ByOrderByIdDesc();
+		} else {
+			return productRepository.findAll();
+		}
+	}
+
 }

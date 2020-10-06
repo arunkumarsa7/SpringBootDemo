@@ -18,4 +18,8 @@ public interface ProductService {
 
 	Iterable<Product> saveAllProducts(List<Product> products);
 
+	void deleteAllProducts(List<Product> products);
+
+	Iterable<Product> listProducts(Integer count);
+
 }

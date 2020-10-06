@@ -30,7 +30,7 @@ public class ProductController {
 	@GetMapping(path = "/products")
 	public String list(final Model model) {
 		model.addAttribute("products", productService.listAllProducts());
-		System.out.println("Returning rpoducts:");
+		System.out.println("Returning poducts:");
 		return "products";
 	}
 
@@ -107,9 +107,25 @@ public class ProductController {
 	 * @param product
 	 * @return
 	 */
-	@PostMapping(path = "products")
+	@PostMapping(path = "saveAll")
 	public Iterable<Product> saveAllProducts(final List<Product> products) {
 		return productService.saveAllProducts(products);
+	}
+
+	@PostMapping("product/deleteAll")
+	public String deleteAllProducts(final List<Product> products) {
+		productService.deleteAllProducts(products);
+		return "redirect:/products";
+	}
+
+	@GetMapping("products/{count}")
+	public Iterable<Product> listProducts(@PathVariable final Integer count) {
+		return productService.listProducts(count);
+	}
+
+	@GetMapping(path = "/listAll")
+	public Iterable<Product> listAll() {
+		return productService.listAllProducts();
 	}
 
 }
