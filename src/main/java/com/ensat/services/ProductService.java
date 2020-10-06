@@ -1,5 +1,7 @@
 package com.ensat.services;
 
+import java.util.List;
+
 import com.ensat.entities.Product;
 
 public interface ProductService {
@@ -11,5 +13,9 @@ public interface ProductService {
 	Product saveProduct(Product product);
 
 	void deleteProduct(Integer id);
+
+	Product getLatestProduct();
+
+	Iterable<Product> saveAllProducts(List<Product> products);
 
 }

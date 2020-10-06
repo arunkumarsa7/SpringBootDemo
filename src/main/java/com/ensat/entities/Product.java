@@ -1,11 +1,12 @@
 package com.ensat.entities;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Version;
-import java.math.BigDecimal;
 
 /**
  * Product entity.
@@ -13,55 +14,74 @@ import java.math.BigDecimal;
 @Entity
 public class Product {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 
-    @Version
-    private Integer version;
+	@Version
+	private Integer version;
 
-    private String productId;
-    private String name;
-    private BigDecimal price;
+	private String productId;
 
-    public String getName() {
-        return name;
-    }
+	private String name;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	private BigDecimal price;
 
-    public Integer getVersion() {
-        return version;
-    }
+	public Product() {
+		super();
+	}
 
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
+	public Product(final Integer version, final String productId, final String name, final BigDecimal price) {
+		super();
+		this.version = version;
+		this.productId = productId;
+		this.name = name;
+		this.price = price;
+	}
 
-    public Integer getId() {
-        return id;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public void setName(final String name) {
+		this.name = name;
+	}
 
-    public String getProductId() {
-        return productId;
-    }
+	public Integer getVersion() {
+		return version;
+	}
 
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
+	public void setVersion(final Integer version) {
+		this.version = version;
+	}
 
-    public BigDecimal getPrice() {
-        return price;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
+	public void setId(final Integer id) {
+		this.id = id;
+	}
+
+	public String getProductId() {
+		return productId;
+	}
+
+	public void setProductId(final String productId) {
+		this.productId = productId;
+	}
+
+	public BigDecimal getPrice() {
+		return price;
+	}
+
+	public void setPrice(final BigDecimal price) {
+		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [version=" + version + ", productId=" + productId + ", name=" + name + ", price=" + price + "]";
+	}
 
 }

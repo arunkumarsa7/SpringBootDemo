@@ -1,5 +1,6 @@
-package com.ensat.services;
+package com.ensat.services.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.ensat.entities.Product;
 import com.ensat.repositories.ProductRepository;
+import com.ensat.services.ProductService;
 
 /**
  * Product service implement.
@@ -14,12 +16,8 @@ import com.ensat.repositories.ProductRepository;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-	private ProductRepository productRepository;
-
 	@Autowired
-	public void setProductRepository(final ProductRepository productRepository) {
-		this.productRepository = productRepository;
-	}
+	private ProductRepository productRepository;
 
 	@Override
 	public Iterable<Product> listAllProducts() {
@@ -38,8 +36,18 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	public Iterable<Product> saveAllProducts(final List<Product> products) {
+		return productRepository.saveAll(products);
+	}
+
+	@Override
 	public void deleteProduct(final Integer id) {
 		productRepository.deleteById(id);
+	}
+
+	@Override
+	public Product getLatestProduct() {
+		return productRepository.findTopByOrderByIdDesc();
 	}
 
 }
