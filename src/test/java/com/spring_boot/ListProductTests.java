@@ -1,4 +1,4 @@
-package com.ensat;
+package com.spring_boot;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -11,8 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.ensat.controllers.ProductController;
-import com.ensat.entities.Product;
+import com.spring_boot.SpringBootWebApplication;
+import com.spring_boot.controllers.ProductController;
+import com.spring_boot.entities.Product;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringBootWebApplication.class)

@@ -1,4 +1,4 @@
-package com.ensat.controllers;
+package com.spring_boot.controllers;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.ensat.entities.Product;
-import com.ensat.services.ProductService;
+import com.spring_boot.entities.Product;
+import com.spring_boot.services.ProductService;
 
 /**
  * Product controller.
@@ -30,7 +30,6 @@ public class ProductController {
 	@GetMapping(path = "/products")
 	public String list(final Model model) {
 		model.addAttribute("products", productService.listAllProducts());
-		System.out.println("Returning poducts:");
 		return "products";
 	}
 
@@ -126,6 +125,11 @@ public class ProductController {
 	@GetMapping(path = "/listAll")
 	public Iterable<Product> listAll() {
 		return productService.listAllProducts();
+	}
+
+	@PostMapping(path = "updateAll")
+	public Iterable<Product> updateAllProducts(final List<Product> products) {
+		return productService.saveAllProducts(products);
 	}
 
 }

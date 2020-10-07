@@ -1,4 +1,4 @@
-package com.ensat.entities;
+package com.spring_boot.entities;
 
 import java.math.BigDecimal;
 

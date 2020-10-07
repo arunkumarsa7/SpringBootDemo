@@ -1,4 +1,4 @@
-package com.ensat;
+package com.spring_boot;
 
 import org.junit.Assert;
 import org.junit.Test;

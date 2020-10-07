@@ -1,4 +1,4 @@
-package com.ensat.services.impl;
+package com.spring_boot.services.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ensat.entities.Product;
-import com.ensat.repositories.ProductRepository;
-import com.ensat.services.ProductService;
+import com.spring_boot.entities.Product;
+import com.spring_boot.repositories.ProductRepository;
+import com.spring_boot.services.ProductService;
 
 /**
  * Product service implement.

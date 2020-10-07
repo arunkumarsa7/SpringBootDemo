@@ -1,8 +1,8 @@
-package com.ensat.repositories;
+package com.spring_boot.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.ensat.entities.Product;
+import com.spring_boot.entities.Product;
 
 public interface ProductRepository extends CrudRepository<Product, Integer> {
 

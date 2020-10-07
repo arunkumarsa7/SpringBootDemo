@@ -1,8 +1,8 @@
-package com.ensat.services;
+package com.spring_boot.services;
 
 import java.util.List;
 
-import com.ensat.entities.Product;
+import com.spring_boot.entities.Product;
 
 public interface ProductService {
 
